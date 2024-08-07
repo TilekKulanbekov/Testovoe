@@ -1,0 +1,26 @@
+.up{
+    color: white;
+    width: 150px;
+    height: 100px;
+}
+
+.down{
+    color: white;
+    width: 150px;
+    height: 100px;
+}
+
+.btns{
+    gap: 20px;
+}
+
+.css-1rwt2y5-MuiButtonBase-root-MuiButton-root{
+    color: white !important;
+    font-size: 30px !important;
+    background: #10213f !important;
+    padding: 0 !important;
+}
+
+.MuiButtonGroup-firstButton{
+    border-color: #06ca15 !important;
+}
