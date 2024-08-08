@@ -19,7 +19,7 @@ const CurrentPrice = ({ onPriceUpdate }) => {
                 .catch((error) => console.error('Error fetching price:', error));
         };
 
-        fetchPrice(); // Initial fetch
+        fetchPrice();
         const interval = setInterval(fetchPrice, 1000);
         return () => clearInterval(interval);
     }, [onPriceUpdate, price]);

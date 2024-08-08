@@ -39,11 +39,11 @@ const betSlice = createSlice({
             state.remainingTime = action.payload;
         },
         addBetToHistory(state, action) {
-            // state.betHistory.push(action.payload);
             localStorage.setItem('betHistory', JSON.stringify(state.betHistory));
         },
         clearBetHistory: (state) => {
             state.betHistory = [];
+            localStorage.removeItem('betHistory');
         },
     }
 });
