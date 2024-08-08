@@ -8,3 +8,18 @@
     margin-bottom: 20px;
     text-decoration: underline;
 }
+
+
+@media (max-width: 640px) {
+    .betHistory{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .history-list {
+        display: none;
+    }
+    .see-more-button {
+        display: block !important;
+    }
+}

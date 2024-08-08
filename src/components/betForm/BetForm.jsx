@@ -26,7 +26,7 @@ const BetForm = ({ balance, onBet, disabled, remainingTime }) => {
     }, []);
 
     return (
-        <Stack spacing={2} mb={2}>
+        <Stack spacing={2} mb={2} className="betFormBtns">
             <ButtonGroup fullWidth variant="contained" className="btns" color="primary" disabled={disabled}>
                 <Button
                     onClick={() => setDirection('up')}

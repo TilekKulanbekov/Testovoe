@@ -4,7 +4,7 @@ const betSlice = createSlice({
     name: 'bet',
     initialState: {
         balance: 1000,
-        betHistory: [],
+        betHistory: JSON.parse(localStorage.getItem('betHistory')) || [],
         currentPrice: 0,
         betInProgress: false,
         modalOpen: false,
@@ -26,6 +26,7 @@ const betSlice = createSlice({
             state.modalOpen = true;
             state.betInProgress = false;
             state.remainingTime = 0;
+            localStorage.setItem('betHistory', JSON.stringify(state.betHistory));
         },
         closeModal(state) {
             state.modalOpen = false;
@@ -36,10 +37,17 @@ const betSlice = createSlice({
         },
         updateTime(state, action) {
             state.remainingTime = action.payload;
-        }
+        },
+        addBetToHistory(state, action) {
+            // state.betHistory.push(action.payload);
+            localStorage.setItem('betHistory', JSON.stringify(state.betHistory));
+        },
+        clearBetHistory: (state) => {
+            state.betHistory = [];
+        },
     }
 });
 
-export const { startBet, endBet, closeModal, updatePrice, updateTime } = betSlice.actions;
+export const { startBet, endBet, closeModal, updatePrice, updateTime, addBetToHistory, clearBetHistory  } = betSlice.actions;
 
 export default betSlice.reducer;

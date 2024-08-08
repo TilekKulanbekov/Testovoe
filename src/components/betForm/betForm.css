@@ -24,3 +24,12 @@
 .MuiButtonGroup-firstButton{
     border-color: #06ca15 !important;
 }
+
+
+.betFormBtns{
+    @media (max-width: 1280px) {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+    }
+}

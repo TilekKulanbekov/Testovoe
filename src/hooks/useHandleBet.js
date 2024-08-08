@@ -1,9 +1,9 @@
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { endBet, startBet } from '../store/slice.js';
+import { addBetToHistory, endBet, startBet } from '../store/slice.js';
 import useCheckResult from './useCheckResult';
 
-const useHandleBet = () => {
+const useHandleBet = (setBetStartPrice) => {
     const dispatch = useDispatch();
     const checkResult = useCheckResult();
 
@@ -11,7 +11,10 @@ const useHandleBet = () => {
         if (betInProgress) return;
 
         const startPrice = currentPriceRef.current;
+        setBetStartPrice(startPrice);
         dispatch(startBet({ amount }));
+
+        const bet = { amount, direction, price: startPrice };
 
         if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
@@ -29,29 +32,29 @@ const useHandleBet = () => {
                 newBalance += profitLossAmount;
             } else if (result === 'draw') {
                 profitLossAmount = 0;
-                newBalance += profitLossAmount;
             } else if (result === 'lost') {
                 profitLossAmount = -amount;
                 newBalance += profitLossAmount;
             }
 
-            const newBet = { amount, direction, price: startPrice, endPrice, result };
             const currentBet = { amount, direction, price: startPrice, endPrice, result };
 
             dispatch(endBet({
                 newBalance,
                 profitLossAmount,
-                newBet,
+                newBet: { ...bet, result, endPrice },
                 currentBet
             }));
-        }, 30000);
+
+            dispatch(addBetToHistory({ ...bet, result, endPrice }));
+        }, 1000);
 
         return () => {
             if (timeoutRef.current) {
                 clearTimeout(timeoutRef.current);
             }
         };
-    }, [dispatch, checkResult]);
+    }, [dispatch, checkResult, setBetStartPrice]);
 };
 
 export default useHandleBet;

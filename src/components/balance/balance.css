@@ -1,0 +1,11 @@
+.balance{
+    @media (max-width: 1280px) {
+        position: absolute;
+        right: 5%;
+        top: 3%;
+        padding: 10px;
+        background: #434343;
+        opacity: 0.7;
+        border-radius: 10px;
+    }
+}

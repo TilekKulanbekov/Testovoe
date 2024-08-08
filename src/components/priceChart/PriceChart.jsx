@@ -4,6 +4,7 @@ import { Chart, registerables } from 'chart.js';
 import 'chartjs-adapter-date-fns';
 import _ from 'lodash';
 import useWebSocket from "../../hooks/useWebsokcet.js";
+import './priceChart.css';
 
 Chart.register(...registerables);
 
@@ -97,7 +98,7 @@ const PriceChart = () => {
     const skipped = (ctx, value) => ctx.p0.skip || ctx.p1.skip ? value : undefined;
 
     return (
-        <div style={{ position: 'relative', height: '400px', width: '100%' }}>
+        <div className='chart-container'>
             <Line data={chartData} options={options} />
         </div>
     );
