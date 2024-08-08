@@ -20,6 +20,16 @@
         display: none;
     }
     .see-more-button {
-        display: block !important;
+        font-size: 12px !important;
+        margin-bottom: 20px !important;
+    }
+    .clear-history-button{
+        font-size: 12px !important;
+    }
+    .list{
+        font-size: 14px;
+    }
+    .historyTitle{
+        font-size: 16px !important;
     }
 }

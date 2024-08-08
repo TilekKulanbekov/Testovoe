@@ -47,7 +47,7 @@ const useHandleBet = (setBetStartPrice) => {
             }));
 
             dispatch(addBetToHistory({ ...bet, result, endPrice }));
-        }, 1000);
+        }, 30000);
 
         return () => {
             if (timeoutRef.current) {

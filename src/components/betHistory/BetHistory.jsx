@@ -29,7 +29,7 @@ const BetHistory = ({ history }) => {
 
     return (
         <Box mb={2} className="betHistory">
-            <Typography variant="h6">Bet History</Typography>
+            <Typography className="historyTitle" variant="h6">Bet History</Typography>
             <div className='wrapper'>
                 {!isMobile && history.length > 0 && (
                     <List className='history-list'>

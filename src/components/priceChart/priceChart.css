@@ -6,7 +6,7 @@
 
 @media (max-width: 640px) {
     .chart-container {
-        height: 200px;
+        height: 250px;
         width: 100%;
     }
 }

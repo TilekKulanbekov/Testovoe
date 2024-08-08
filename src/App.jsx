@@ -63,7 +63,7 @@ const App = () => {
                 <div className='betForm'>
                     <Balance balance={balance} />
                     <Box mb={2}>
-                        <Typography className="betStartPrice" variant="h6">Bet Start Price: ${betStartPrice !== null ? betStartPrice.toFixed(2) : 'N/A'}</Typography>
+                        <Typography className="betStartPrice" variant="h6">Start Price: ${betStartPrice !== null ? betStartPrice.toFixed(2) : 'N/A'}</Typography>
                     </Box>
                     <BetForm
                         balance={balance}
