@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const betSlice = createSlice({
     name: 'bet',
     initialState: {
-        balance: 1000,
+        balance: JSON.parse(localStorage.getItem('balance')) || 1000,
         betHistory: JSON.parse(localStorage.getItem('betHistory')) || [],
         currentPrice: 0,
         betInProgress: false,
@@ -17,6 +17,7 @@ const betSlice = createSlice({
             state.balance -= action.payload.amount;
             state.betInProgress = true;
             state.remainingTime = 30;
+            localStorage.setItem('balance', JSON.stringify(state.balance));
         },
         endBet(state, action) {
             state.balance = action.payload.newBalance;
@@ -27,6 +28,7 @@ const betSlice = createSlice({
             state.betInProgress = false;
             state.remainingTime = 0;
             localStorage.setItem('betHistory', JSON.stringify(state.betHistory));
+            localStorage.setItem('balance', JSON.stringify(state.balance));
         },
         closeModal(state) {
             state.modalOpen = false;
